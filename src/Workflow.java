@@ -1,11 +1,11 @@
 package src;
 
-//the workflow class handles the divorce 
+//the workflowitem class handles the divorce
 public class Workflow{
     /* currentReport is the report for the workflow item*/
     DivorceReport currentReport;
     
-    //This is the workflow object. The item consists of a divorce report,
+    //This is the workflow item object. The item consists of a divorce report,
     public Workflow(DivorceReport report){
         currentReport = report;
     }
