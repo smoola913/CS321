@@ -5,25 +5,64 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class UnitTesting {
-    
+    /*
+     * Workflow class tests
+     */
+
+
+    /*
+     * Divorce Report class tests
+     */
     @Test
-    void DivorceReportTest(){
+    public void DivorceReportTest0(){
         
         DivorceReport dr = new DivorceReport("Mary", "John");
 
-        assertEquals("John", dr.getUsersName());
         assertEquals("Mary", dr.getUsersName());
         assertEquals("John", dr.getSpousesName());
-        assertEquals("Mary", dr.getSpousesName());
     }
 
     @Test
-    void DataEntry(){
-        showDataEntryScreen();
-        DivorceReport dr = new DivorceReport("liz", "jeff");
-        WorkflowItem wf = new WorkflowItem(dr);  
-        assertEquals(dr, createDivorceReport("liz", "jeff"));
-        assertEquals(wf, createWorkflowItem(dr));
-    }
-}
+    public void DivorceReportTest1(){
+        
+        DivorceReport dr = new DivorceReport("Jeff", "Hellen");
 
+        assertEquals("Jeff", dr.getUsersName());
+        assertEquals("Hellen", dr.getSpousesName());
+    }
+
+    @Test
+    public void DivorceReportTest2(){
+        
+        DivorceReport dr = new DivorceReport("", "");
+
+        assertEquals("", dr.getUsersName());
+        assertEquals("", dr.getSpousesName());
+    }
+
+
+    /*
+     * Review class tests
+     */
+
+     @Test
+    public void review() {
+
+        Review review = new Review();
+
+        review.setName("Bob");
+
+        assertEquals("Bob", review.getName());
+        // assertEquals("Boeb", review.getName());
+    }
+
+
+    /*
+     * Data Entry class tests
+     */
+
+
+    /*
+     * Approval class tests
+     */
+}
