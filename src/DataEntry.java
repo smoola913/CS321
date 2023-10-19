@@ -5,18 +5,19 @@ public class DataEntry{
     //this will open a gui
     void showDataEntryScreen(){
         //within the gui
-        String n1;
-        String n2;
-        createDivorceReport(n1, n2);       
-    }
-    
-    WorkflowItem addWorkflowItem(DivorceReport report){
-        WorkflowItem
+        String n1 = "liz";
+        String n2 = "jeff";
+        DivorceReport dr = createDivorceReport(n1, n2);
+        WorkflowItem wf = createWorkflowItem(dr);    
     }
 
     DivorceReport createDivorceReport(String n1, String n2){
-        DivorceReport newDivorce = new DivorceReport(n1, n2);
-        return newDivorce;
+        DivorceReport dr = new DivorceReport(n1, n2);
+        return dr;
     }
 
+    WorkflowItem createWorkflowItem(DivorceReport dr){
+        WorkflowItem wf = new WorkflowItem(dr);
+        return wf;
+    }
 }

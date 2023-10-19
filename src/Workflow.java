@@ -6,11 +6,8 @@ public class Workflow{
     //This is the workflow object. The item consists of a divorce report,
     public WorkflowItem(DivorceReport report){
         currentReport = report;
-        callReview(report);
-        callApproval();
     }
-    
-    //
+
     DivorceReport getReport(){
         return currentReport;
     }

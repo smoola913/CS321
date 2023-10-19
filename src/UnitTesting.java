@@ -16,5 +16,14 @@ public class UnitTesting {
         assertEquals("John", dr.getSpousesName());
         assertEquals("Mary", dr.getSpousesName());
     }
+
+    @Test
+    void DataEntry(){
+        showDataEntryScreen();
+        DivorceReport dr = new DivorceReport("liz", "jeff");
+        WorkflowItem wf = new WorkflowItem(dr);  
+        assertEquals(dr, createDivorceReport("liz", "jeff"));
+        assertEquals(wf, createWorkflowItem(dr));
+    }
 }
 
