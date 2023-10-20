@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class UnitTesting {
 
-    public Workflow workflow;
     /*
      * Workflow object tests
      */
@@ -44,5 +43,12 @@ public class UnitTesting {
         //assert whether review was received
         assertEquals(report, getDivorceReport(workflow));
 
+    }
+
+    public static void main(String[] args){
+        Workflow workflow;
+        ReportCreatedTest();
+        WorkflowCreatedTest();
+        ReportReceivedTest();
     }
 }
