@@ -1,6 +1,7 @@
 package src;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -8,7 +9,15 @@ public class UnitTesting {
     /*
      * Workflow class tests
      */
+    @Test
+    public void WorkFlowTest1(){
+        String name = "Bob";
+        String spouse = "Linda";
+        DivorceReport report = new DivorceReport(name, spouse);
+        Workflow workflow = new Workflow(report);
 
+        assertEquals(report, workflow.getReport());
+    }
 
     /*
      * Divorce Report class tests
@@ -48,12 +57,11 @@ public class UnitTesting {
      @Test
     public void review() {
 
-        Review review = new Review();
-
-        review.setName("Bob");
+        Review review = new Review("Bob", true, 1539845);
 
         assertEquals("Bob", review.getName());
-        // assertEquals("Boeb", review.getName());
+         assertEquals(1539845, review.getID());
+         assertTrue(review.getMaritalStatus());
     }
 
 
@@ -61,8 +69,30 @@ public class UnitTesting {
      * Data Entry class tests
      */
 
+    @Test
+    public void dataEntryTest1(){
+        DataEntry dataEntry = new DataEntry("Bob", "Lisa", "Marry");
+
+        assertEquals("Bob", dataEntry.getUsersName());
+        assertEquals("Lisa", dataEntry.getSpousesName());
+        assertEquals("Marry", dataEntry.getAction());
+    }
+
+    @Test
+    public void dataEntryTest2(){
+        DataEntry dataEntry = new DataEntry("Bob", "Lisa", "Divorce");
+
+        assertEquals("Bob", dataEntry.getUsersName());
+        assertEquals("Lisa", dataEntry.getSpousesName());
+        assertEquals("Divorce", dataEntry.getAction());
+    }
 
     /*
      * Approval class tests
      */
+
+    public static void main(String[] args){
+
+    }
+
 }

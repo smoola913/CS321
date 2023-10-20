@@ -8,12 +8,12 @@ public class ReviewTest {
 
     @Test
     public void review() {
-
         Review review = new Review();
 
         review.setName("Bob");
+        review.setId(6679362);
 
         assertEquals("Bob", review.getName());
-        // assertEquals("Boeb", review.getName());
+        assertEquals(6679362, review.getID());
     }
 }
