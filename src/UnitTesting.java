@@ -23,7 +23,8 @@ public class UnitTesting {
         assertNotNull(workflow);
     }
 
-    // Tests that the workflow is returned from Review
+    // Tests that the workflow is returned from Review, assumes validation is true
+    // and the workflow object will have Approval as the next step.
     @Test
     public void WorkflowReviewReturnedTest() {
         Workflow workflow = new Workflow();
@@ -37,7 +38,7 @@ public class UnitTesting {
         assertEquals("Approval", workflow.getStep());
     }
 
-    // Tests that the workflow is returned from Approval if not validated
+    // Tests that the workflow is returned from Approval when not validated
     @Test
     public void WorkflowApprovalReturnedTest() {
         Workflow workflow = new Workflow();
@@ -53,25 +54,23 @@ public class UnitTesting {
     }
 
     // Divorce Report
+    // Tests that the report is created.
     @Test
     public void ReportCreatedTest() {
-        // create report
         DivorceReport report = new DivorceReport();
 
         assertTrue(checkReport(report));
-        // assert whether review was created
     }
 
+    // Tests that the report is received
     @Test
     public void ReportReceivedTest() {
-        // create review
         DivorceReport report = new DivorceReport();
+
         Boolean validated = checkReport(report);
 
-        // send review
         nextStep(validated);
 
-        // assert whether review was received
         assertEquals(report, getDivorceReport(workflow));
 
     }
