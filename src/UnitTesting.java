@@ -87,7 +87,7 @@ public class UnitTesting {
 
     // Tests DivorceReport to ensure that fields are initialized correctly.
     @Test
-    public void DivorceReportTest() {
+    public void testGetUserInfo() {
 
         DivorceReport report = new DivorceReport("Mary", "John", "Status");
 
@@ -96,25 +96,20 @@ public class UnitTesting {
         assertEquals("Status", report.getMarriageStatus());
     }
 
-    // Tests DivorceReport to ensure that fields are initialized correctly.
+    // Tests if the spouse and the user are the same person
     @Test
-    public void DivorceReportTest_1() {
-        DivorceReport report = new DivorceReport("Jeff", "Hellen", "Status");
+    public void TestSameName() {
+        DivorceReport report = new DivorceReport("Jeff", "Jeff", "Status");
 
-        assertEquals("Jeff", report.getUserInformation());
-        assertEquals("Hellen", report.getSpouseInformation());
-        assertEquals("Status", report.getMarriageStatus());
+        assertTrue(differentName());
     }
 
-    // Tests DivorceReport using empty strings (When programming, empty Strings
-    // won't ever create a divorce report, they'll be rejected at input).
+    // Tests if divorce report is created with an empty string
     @Test
-    public void DivorceReportTest_2() {
+    public void EmptyString() {
 
         DivorceReport report = new DivorceReport("", "", "");
 
-        assertEquals("", report.getUserInformation());
-        assertEquals("", report.getSpouseInformation());
-        assertEquals("", report.getMarriageStatus());
+        assertTrue(isEmptyString(report.getUserInformation));
     }
 }
