@@ -23,6 +23,35 @@ public class UnitTesting {
         assertNotNull(workflow);
     }
 
+    // Tests that the workflow is returned from Review, assumes validation is true
+    // and the workflow object will have Approval as the next step.
+    @Test
+    public void WorkflowReviewReturnedTest() {
+        Workflow workflow = new Workflow();
+
+        DivorceReport report = new DivorceReport("User", "Spouse", "Status");
+
+        Review review = new Review(report, true, workflow);
+
+        review.nextStep(review.getValidated());
+
+        assertEquals("Approval", workflow.getStep());
+    }
+
+    // Tests that the workflow is returned from Approval when not validated
+    @Test
+    public void WorkflowApprovalReturnedTest() {
+        Workflow workflow = new Workflow();
+
+        DivorceReport report = new DivorceReport("User", "Spouse", "Status");
+
+        Approval approval = new Approval(report, false, workflow);
+
+        approval.nextStep(approval.getValidated());
+
+        assertEquals("Review", workflow.getStep);
+
+    }
     // Tests that the workflow is returned from Review
     @Test
     public void WorkflowReviewReturnedTest() {
@@ -37,6 +66,16 @@ public class UnitTesting {
         assertEquals("Approval", workflow.getStep());
     }
 
+    // Divorce Report
+    // Tests that the report is created.
+    @Test
+    public void ReportCreatedTest() {
+        DivorceReport report = new DivorceReport();
+
+        assertTrue(checkReport(report));
+    }
+
+    // Tests that the report is received
     // Tests that the workflow is returned from Approval if not validated
     @Test
     public void WorkflowApprovalReturnedTest() {
@@ -52,7 +91,7 @@ public class UnitTesting {
 
     }
 
-    // Tests to ensure that report is equal to the report created in the workflow 
+    // Tests to ensure that report is equal to the report created in the workflow
     @Test
     public void WorkflowTest() {
         DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
@@ -62,6 +101,18 @@ public class UnitTesting {
         assertEquals(report, workflow.getReport());
     }
 
+    // Tests DivorceReport to ensure that fields are initialized correctly
+    @Test
+    public void ReportReceivedTest() {
+        DivorceReport report = new DivorceReport();
+
+        Boolean validated = checkReport(report);
+
+        nextStep(validated);
+
+        assertEquals(report, getDivorceReport(workflow));
+
+    }
     // Tests DivorceReport to ensure that fields are initialized correctly
     @Test
     public void DivorceReportTest() {
@@ -76,7 +127,6 @@ public class UnitTesting {
     // Tests DivorceReport to ensure that fields are initialized correctly
     @Test
     public void DivorceReportTest_1() {
-
         DivorceReport report = new DivorceReport("Jeff", "Hellen", "Status");
 
         assertEquals("Jeff", report.getUserInformation());
