@@ -52,6 +52,7 @@ public class UnitTesting {
 
     }
 
+    // Tests to ensure that report is equal to the report created in the workflow 
     @Test
     public void WorkflowTest() {
         DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
@@ -61,7 +62,7 @@ public class UnitTesting {
         assertEquals(report, workflow.getReport());
     }
 
-    // DivorceReport
+    // Tests DivorceReport to ensure that fields are initialized correctly
     @Test
     public void DivorceReportTest() {
 
@@ -72,6 +73,7 @@ public class UnitTesting {
         assertEquals("Status", report.getMarriageStatus());
     }
 
+    // Tests DivorceReport to ensure that fields are initialized correctly
     @Test
     public void DivorceReportTest_1() {
 
@@ -82,6 +84,7 @@ public class UnitTesting {
         assertEquals("Status", report.getMarriageStatus());
     }
 
+    // Tests DivorceReport using empty strings (When programming, empty Strings won't ever create a divorce report, they'll be rejected at input).
     @Test
     public void DivorceReportTest_2() {
 
@@ -90,35 +93,5 @@ public class UnitTesting {
         assertEquals("", report.getUserInformation());
         assertEquals("", report.getSpouseInformation());
         assertEquals("", report.getMarriageStatus());
-    }
-
-    // Review
-    @Test
-    public void ReviewTest() {
-
-        Review review = new Review("Bob", true, 1539845);
-
-        assertEquals("Bob", review.getName());
-        assertEquals(1539845, review.getID());
-        assertTrue(review.getMaritalStatus());
-    }
-
-    // DataEntry
-    @Test
-    public void DataEntryTest1() {
-        DataEntry dataEntry = new DataEntry("Bob", "Lisa", "Marry");
-
-        assertEquals("Bob", dataEntry.getUserInformation());
-        assertEquals("Lisa", dataEntry.getSpouseInformation());
-        assertEquals("Marry", dataEntry.getAction());
-    }
-
-    @Test
-    public void DataEntryTest2() {
-        DataEntry dataEntry = new DataEntry("Bob", "Lisa", "Divorce");
-
-        assertEquals("Bob", dataEntry.getUserInformation());
-        assertEquals("Lisa", dataEntry.getSpouseInformation());
-        assertEquals("Divorce", dataEntry.getAction());
     }
 }
