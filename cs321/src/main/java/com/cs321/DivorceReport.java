@@ -1,14 +1,20 @@
 package com.cs321;
 
 public class DivorceReport{
-    String fname;
-    String spouseFName;
-    public DivorceReport(String username, String spouseFName, String status){
-        this.fname = fname;
-        this.spouseFName = spouseFName;
+    String username;
+    String spouseName;
+    String status;
+    public DivorceReport(String username, String spouseName, String status){
+        this.username = username;
+        this.spouseName = spouseName;
+        this.status = status;
     }
 
     String getfName(){
-        return this.fname;
+        return this.username;
+    }
+
+    public String toString(){
+        return "DivorceReport Object: {Username" + username +  ", " + spouseName  + ", " + status  + "\n";
     }
 }

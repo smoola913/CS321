@@ -12,7 +12,13 @@
       <TextField id="name" fx:id="name" layoutX="115.0" layoutY="28.0" />
       <Label text="Enter your spouses first name" />
       <TextField id="spouse_name" fx:id="spouse_name" layoutX="115.0" layoutY="28.0" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
+      <Button fx:id="submit" text="Submit" onAction="#createReport("name.getText()", spouse_name.getText(), Married)"/>
+      <Button fx:id="cancel" text="Cancel"/>
+      <fx:script>
+         function handleSubmitButtonAction() {
+            actiontarget.setText("Calling the JavaScript");
+         }
+      </fx:script>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
