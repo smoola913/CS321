@@ -18,4 +18,9 @@ public class DataEntryController {
         DivorceReport dr = new DivorceReport(name.getText(), spouse_name.getText(), "N/A ATM");
         System.out.println(dr);
     }
+
+    @FXML
+    private void cancel(){
+        System.exit(0);
+    }
 }
