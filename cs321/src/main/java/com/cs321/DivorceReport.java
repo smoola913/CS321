@@ -34,4 +34,9 @@ public class DivorceReport {
     public void setMarriageStatus(String marriageStatus) {
         this.marriageStatus = marriageStatus;
     }
+
+    public String toString() {
+        return "DivorceReport Object: {Username: " + userInformation + ", Spouses Name: " + spouseInformation
+                + ", Current Status: " + marriageStatus + "}\n";
+    }
 }
