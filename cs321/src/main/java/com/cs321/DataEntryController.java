@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class DataEntryController {
+    
+    private Workflow workflow;
 
     @FXML
     private TextField name;
@@ -22,5 +24,9 @@ public class DataEntryController {
     @FXML
     private void cancel(){
         System.exit(0);
+    }
+
+    public Workflow createWorkflowItem(DivorceReport dr){
+        return workflow;
     }
 }
