@@ -8,9 +8,9 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs321.ReviewController">
    <children>
-      <Label text="Review"/>
-      <Label text="Test"/>
-      <Button fx:id="primaryButton" text="Test" onAction="#Test"/>
+      <Label text="Review" style="-fx-font-family: serif"/>
+      <Label text="Test" style="-fx-font-family: serif"/>
+      <Button fx:id="primaryButton" text="Test" onAction="#Test" style="-fx-font-family: serif"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
