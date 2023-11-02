@@ -8,12 +8,12 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs321.DataEntryController">
    <children>
-      <Label text="Enter your name" />
-      <TextField id="name" fx:id="name" layoutX="115.0" layoutY="28.0" />
+      <Label text="Enter your name" style="-fx-font-family: serif"/>
+      <TextField id="name" fx:id="name" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
       <Label text="Enter your spouses first name" />
-      <TextField id="spouse_name" fx:id="spouse_name" layoutX="115.0" layoutY="28.0" />
-      <Button fx:id="submit" text="Submit" onAction="#createReport"/>
-      <Button fx:id="cancel" text="Cancel"/>
+      <TextField id="spouse_name" fx:id="spouse_name" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
+      <Button fx:id="submit" text="Submit" onAction="#createReport" style="-fx-font-family: serif"/>
+      <Button fx:id="cancel" text="Cancel" style="-fx-font-family: serif"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
