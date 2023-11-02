@@ -13,6 +13,5 @@ public class DataEntryController {
     @FXML private void createReport(ActionEvent  event) throws IOException {
         DivorceReport dr = new DivorceReport(name.getText(), spouse_name.getText(), "N/A ATM");
         System.out.println(dr);
-        App.setRoot("secondary");
     }
 }
