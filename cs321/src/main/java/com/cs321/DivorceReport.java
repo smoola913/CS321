@@ -36,7 +36,7 @@ public class DivorceReport {
     }
 
     public String toString() {
-        return "DivorceReport Object: {Username: " + userInformation + ", Spouses Name: " + spouseInformation
+        return "Divorce Report Object: {Username: " + userInformation + ", Spouses Name: " + spouseInformation
                 + ", Current Status: " + marriageStatus + "}\n";
     }
 }
