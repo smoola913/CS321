@@ -1,5 +1,6 @@
 package com.cs321;
 
+// Second workflow step that involves the review and editing of a given workflow's divorce report.
 public class Review {
     private DivorceReport report;
     private Boolean validated;
