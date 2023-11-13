@@ -110,13 +110,13 @@ public class UnitTests {
     }
 
     // Review
-
+    // Tests that review has initialized its values correctly.
     @Test
     public void ReviewInitializationTest() {
         DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
         Workflow workflow = new Workflow(report, "Review");
 
-        Review review = new Review(workflow.getReport(), true, workflow);
+        Review review = new Review(true, workflow);
 
         assertEquals(report, review.getReport());
         assertEquals(true, review.getValidated());
