@@ -11,22 +11,20 @@ public class UnitTests {
 
     // Workflow
 
-    /*
-     * 
-     * // Tests that the workflow is created from DataEntry's createWorkflowItem
-     * // method.
-     * 
-     * @Test
-     * public void WorkflowCreatedTest() {
-     * DataEntry dataEntry = new DataEntry();
-     * 
-     * DivorceReport report = new DivorceReport("User", "Spouse", "Status");
-     * 
-     * Workflow workflow = dataEntry.createWorkflowItem(report);
-     * 
-     * assertNotNull(workflow);
-     * }
-     * 
+    
+      
+    // Tests that the workflow is created from DataEntry's createWorkflowItem
+    // method.
+    
+    // @Test
+    // public void WorkflowCreatedTest() {
+    //     DivorceReport report = new DivorceReport("User", "Spouse", "Status");
+        
+    //     Workflow workflow = dataEntry.createWorkflowItem(report);
+        
+    //     assertNotNull(workflow);
+    // }
+     /*
      * // Tests that the workflow is returned from Review, assumes validation is
      * true
      * // and the workflow object will have Approval as the next step.
