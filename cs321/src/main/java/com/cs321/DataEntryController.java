@@ -25,8 +25,4 @@ public class DataEntryController {
     private void cancel(){
         System.exit(0);
     }
-
-    public Workflow createWorkflowItem(DivorceReport dr){
-        return workflow;
-    }
 }
