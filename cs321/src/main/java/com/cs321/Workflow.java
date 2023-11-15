@@ -17,9 +17,6 @@ public class Workflow {
     
     private DivorceReport report;
     private String step;
-
-    Queue<DivorceReport> review = new LinkedList<>();
-    Queue<DivorceReport> approval = new LinkedList<>();
     HashMap<wfStep, Queue<DivorceReport>> wfTable = new HashMap<>();
 
     /**
