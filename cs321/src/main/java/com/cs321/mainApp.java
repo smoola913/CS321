@@ -8,35 +8,44 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class mainApp extends Application {
-    private static Scene de;
+public class MainApp extends Application {
+    private static Scene dataentry;
     private static Scene review;
     private static Scene approval;
 
+    /*
+     * Stage and scene creation for the data entry, review, and approval steps.
+     * 
+     */
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        de = createScene("data-entry");
+    public void start(Stage reviewStage) throws IOException {
+        dataentry = createScene("data-entry");
         review = createScene("review");
         approval = createScene("approval");
 
-        primaryStage.setScene(de);
-        primaryStage.setTitle("Data Entry");
-        primaryStage.show();
+        reviewStage.setScene(review);
+        reviewStage.setTitle("Review");
+        reviewStage.setHeight(800);
+        reviewStage.setWidth(600);
+        reviewStage.show();
 
-        // Create and show additional stages for scene 2 and scene 3
-        Stage stage2 = new Stage();
-        stage2.setScene(review);
-        stage2.setTitle("Review");
-        stage2.show();
+        Stage dataEntryStage = new Stage();
+        dataEntryStage.setScene(dataentry);
+        dataEntryStage.setTitle("Data Entry");
+        dataEntryStage.setX(reviewStage.getX() + 700);
+        dataEntryStage.setY(reviewStage.getY());
+        dataEntryStage.show();
 
-        Stage stage3 = new Stage();
-        stage3.setScene(approval);
-        stage3.setTitle("Approval");
-        stage3.show();
+        Stage approvalStage = new Stage();
+        approvalStage.setScene(approval);
+        approvalStage.setTitle("Approval");
+        approvalStage.setX(reviewStage.getX() - 700);
+        approvalStage.setY(reviewStage.getY());
+        approvalStage.show();
     }
 
     private static Scene createScene(String fxml) throws IOException {
-        Parent root = FXMLLoader.load(mainApp.class.getResource(fxml + ".fxml"));
+        Parent root = FXMLLoader.load(MainApp.class.getResource(fxml + ".fxml"));
         return new Scene(root, 640, 480);
     }
 

@@ -9,7 +9,7 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs321.ReviewController">
    <children>
       <Label text="Review" style="-fx-font-family: serif; -fx-font-weight: bold"/>
-         <Label text="View Report" style="-fx-font-family: serif; -fx-font-weight: bold"/>
+         <Label text="Report Information" style="-fx-font-family: serif; -fx-font-weight: bold"/>
             <Button fx:id="view" text="View" onAction="#view" style="-fx-font-family: serif"/>
 
          <Label text="Edit Report" style="-fx-font-family: serif; -fx-font-weight: bold"/>
@@ -22,7 +22,8 @@
             <Button fx:id="edit" text="Edit" onAction="#edit" style="-fx-font-family: serif"/>
       
          <Label text="Finish Review" style="-fx-font-family: serif; -fx-font-weight: bold"/>
-            <Button fx:id="finish" text="Finish" onAction="#finish" style="-fx-font-family: serif"/>
+            <Button fx:id="finish" text="Finish" onAction="#finish" style="-fx-font-family: serif"/>            
+            <Button fx:id="next" text="Next" onAction="#next" style="-fx-font-family: serif"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

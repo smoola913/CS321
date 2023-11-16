@@ -11,20 +11,18 @@ public class UnitTests {
 
     // Workflow
 
-    
-      
     // Tests that the workflow is created from DataEntry's createWorkflowItem
     // method.
-    
+
     // @Test
     // public void WorkflowCreatedTest() {
-    //     DivorceReport report = new DivorceReport("User", "Spouse", "Status");
-        
-    //     Workflow workflow = dataEntry .createWorkflowItem(report);
-        
-    //     assertNotNull(workflow);
+    // DivorceReport report = new DivorceReport("User", "Spouse", "Status");
+
+    // Workflow workflow = dataEntry .createWorkflowItem(report);
+
+    // assertNotNull(workflow);
     // }
-     /*
+    /*
      * // Tests that the workflow is returned from Review, assumes validation is
      * true
      * // and the workflow object will have Approval as the next step.
@@ -63,11 +61,11 @@ public class UnitTests {
     // Tests to ensure that report is equal to the report created in the workflow.
     // @Test
     // public void WorkflowTest() {
-    //     DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
+    // DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
 
-    //     Workflow workflow = new Workflow(report, "Review");
+    // Workflow workflow = new Workflow(report, "Review");
 
-    //     assertEquals(report, workflow.getReport());
+    // assertEquals(report, workflow.getReport());
     // }
 
     // Divorce Report
@@ -113,17 +111,17 @@ public class UnitTests {
     // Tests that review has initialized its values correctly.
     // @Test
     // public void ReviewInitializationTest() {
-    //     DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
-    //     // Workflow workflow = new Workflow(report, "Review");
+    // DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
+    // // Workflow workflow = new Workflow(report, "Review");
 
-    //     Review review = new Review(true, workflow);
+    // Review review = new Review(true, workflow);
 
-    //     assertEquals(report, review.getReport());
-    //     assertEquals(true, review.getValidated());
-    //     assertEquals(workflow, review.getWorkflow());
+    // assertEquals(report, review.getReport());
+    // assertEquals(true, review.getValidated());
+    // assertEquals(workflow, review.getWorkflow());
     // }
 
-    //Workflow Test
+    // Workflow Test
     // @Test
-    // public void Workflo
+    // public void Workflow
 }
