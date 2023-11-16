@@ -8,11 +8,15 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs321.ApprovalController">
    <children>
-      <Label text="Enter client name" style="-fx-font-family: serif"/>
+      <Label text="Load Report" style="-fx-font-family: serif; -fx-font-weight: bold"/>
+      <Button fx:id="load" text="Load" onAction="#load" style="-fx-font-family: serif"/>
+      <Label text="Fill Report" style="-fx-font-family: serif; -fx-font-weight: bold"/>
+      <Button fx:id="fill" text="Fill" onAction="#fill" style="-fx-font-family: serif"/>
+      <Label text="Client name" style="-fx-font-family: serif"/>
       <TextField id="client_name" fx:id="client_name" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
-      <Label text="Enter current marriage status (Single, Married, Divorced)" style="-fx-font-family: serif"/>
-      <TextField id="current_status" fx:id="current_status" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/> 
-      <Label text="Enter desired status change (Single, Married, Divorced)" style="-fx-font-family: serif"/>
+      <Label text="Spouse name" style="-fx-font-family: serif"/>
+      <TextField id="spouse_name" fx:id="spouse_name" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/> 
+      <Label text="Desired status change (Single, Married, Divorced)" style="-fx-font-family: serif"/>
       <TextField id="desired_status" fx:id="desired_status" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/> 
       <Button fx:id="approve" text="Approve" onAction="#sendApproval" style="-fx-font-family: serif"/>
       <Button fx:id="deny" text="Deny" onAction="#denyApproval" style="-fx-font-family: serif"/>

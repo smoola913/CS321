@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class ReviewController {
-    private DivorceReport report;
     private Review review;
 
     @FXML
@@ -23,9 +22,13 @@ public class ReviewController {
 
     @FXML
     public void initialize() {
-        System.out.println("TEST REVIEW");
+        System.out.println("REVIEW");
     }
 
+    /*
+     * Shows the values of the current report in the input textfields.
+     * 
+     */
     @FXML
     private void view(ActionEvent event) throws IOException {
         user.setText(review.getReport().getUserInformation());
@@ -33,31 +36,56 @@ public class ReviewController {
         marriage.setText(review.getReport().getMarriageStatus());
     }
 
+    /*
+     * Modifies the values in the review given the report currently exists and the
+     * given strings are not empty.
+     * 
+     */
     @FXML
     private void edit(ActionEvent event) throws IOException {
         if (user.getText() != "" && review.getReport() != null)
             review.getReport().setUserInformation(user.getText());
+
         if (spouse.getText() != "" && review.getReport() != null)
             review.getReport().setSpouseInformation(spouse.getText());
+
         if (marriage.getText() != "" && review.getReport() != null)
             review.getReport().setMarriageStatus(marriage.getText());
 
-        System.out.println(report);
+        System.out.println(review.getReport());
     }
+
+    /*
+     * Gets the next review item in the workflow and sets it to review's report.
+     * 
+     */
 
     @FXML
     private void next() {
         review.setReport(Workflow.getReviewItem());
     }
 
+    /*
+     * Takes the divorce report and adds it to the workflow in the approval step
+     * queue. Then resets the values shown in the review screen.
+     * 
+     */
     @FXML
     private void finish() {
-        System.out.println(report);
+        if (review.getReport() == null) {
+            System.out.println("Report does not exist.");
+        }
 
-        review.setReport(null);
+        else {
+            System.out.println(review.getReport());
 
-        user.setText("");
-        spouse.setText("");
-        marriage.setText("");
+            Workflow.putReviewedItem(review.getReport());
+
+            review.setReport(null);
+
+            user.setText("");
+            spouse.setText("");
+            marriage.setText("");
+        }
     }
 }
