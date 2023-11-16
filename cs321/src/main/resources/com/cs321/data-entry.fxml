@@ -10,7 +10,7 @@
    <children>
       <Label text="Enter your name" style="-fx-font-family: serif"/>
       <TextField id="name" fx:id="name" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
-      <Label text="Enter your spouses first name" />
+      <Label text="Enter your spouses first name" style="-fx-font-family: serif"/>
       <TextField id="spouse_name" fx:id="spouse_name" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
       <Button fx:id="submit" text="Submit" onAction="#createReport" style="-fx-font-family: serif"/>
       <Button fx:id="cancel" text="Cancel" onAction="#cancel" style="-fx-font-family: serif"/>

@@ -15,9 +15,9 @@
          <Label text="Edit Report" style="-fx-font-family: serif; -fx-font-weight: bold"/>
             <Label text="Modify user information:" style="-fx-font-family: serif"/>
             <TextField id="user" fx:id="user" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
-            <Label text="Modify spouse information:" />
+            <Label text="Modify spouse information:" style="-fx-font-family: serif"/>
             <TextField id="spouse" fx:id="spouse" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
-            <Label text="Modify marriage status:" />
+            <Label text="Modify marriage status:" style="-fx-font-family: serif"/>
             <TextField id="marriage" fx:id="marriage" layoutX="115.0" layoutY="28.0" style="-fx-font-family: serif"/>
             <Button fx:id="edit" text="Edit" onAction="#edit" style="-fx-font-family: serif"/>
       
