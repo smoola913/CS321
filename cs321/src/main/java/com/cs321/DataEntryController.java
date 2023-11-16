@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class DataEntryController {
-    
+
     private Workflow workflow;
 
     @FXML
@@ -19,14 +19,11 @@ public class DataEntryController {
     private void createReport(ActionEvent event) throws IOException {
         DivorceReport dr = new DivorceReport(name.getText(), spouse_name.getText(), "N/A ATM");
         System.out.println(dr);
+        Workflow.createWorkflowItem(dr);
     }
 
     @FXML
-    private void cancel(){
+    private void cancel() {
         System.exit(0);
-    }
-
-    public Workflow createWorkflowItem(DivorceReport dr){
-        return workflow;
     }
 }

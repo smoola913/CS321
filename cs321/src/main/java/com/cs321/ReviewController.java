@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 
 public class ReviewController {
     private DivorceReport report;
-    private Workflow workflow;
     private Review review;
 
     @FXML
@@ -19,10 +18,12 @@ public class ReviewController {
     private TextField marriage;
 
     public ReviewController() {
-        report = new DivorceReport("John", "Jane", "Married");
-        workflow = new Workflow(report, "Review");
+        review = new Review(null, null);
+    }
 
-        review = new Review(false, workflow);
+    @FXML
+    public void initialize() {
+        System.out.println("TEST REVIEW");
     }
 
     @FXML
@@ -34,19 +35,29 @@ public class ReviewController {
 
     @FXML
     private void edit(ActionEvent event) throws IOException {
-        if (user.getText() != "")
+        if (user.getText() != "" && review.getReport() != null)
             review.getReport().setUserInformation(user.getText());
-        if (spouse.getText() != "")
+        if (spouse.getText() != "" && review.getReport() != null)
             review.getReport().setSpouseInformation(spouse.getText());
-        if (marriage.getText() != "")
+        if (marriage.getText() != "" && review.getReport() != null)
             review.getReport().setMarriageStatus(marriage.getText());
 
         System.out.println(report);
     }
 
     @FXML
+    private void next() {
+        review.setReport(Workflow.getReviewItem());
+    }
+
+    @FXML
     private void finish() {
         System.out.println(report);
-        System.exit(0);
+
+        review.setReport(null);
+
+        user.setText("");
+        spouse.setText("");
+        marriage.setText("");
     }
 }
