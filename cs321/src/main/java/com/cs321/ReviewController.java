@@ -20,7 +20,7 @@ public class ReviewController {
 
     public ReviewController() {
         report = new DivorceReport("John", "Jane", "Married");
-        workflow = new Workflow(report, "Review");
+        // workflow = new Workflow(report, "Review");
 
         review = new Review(false, workflow);
     }

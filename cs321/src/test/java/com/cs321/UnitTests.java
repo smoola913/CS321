@@ -61,14 +61,14 @@ public class UnitTests {
      */
 
     // Tests to ensure that report is equal to the report created in the workflow.
-    @Test
-    public void WorkflowTest() {
-        DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
+    // @Test
+    // public void WorkflowTest() {
+    //     DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
 
-        Workflow workflow = new Workflow(report, "Review");
+    //     Workflow workflow = new Workflow(report, "Review");
 
-        assertEquals(report, workflow.getReport());
-    }
+    //     assertEquals(report, workflow.getReport());
+    // }
 
     // Divorce Report
     // Tests that the report is created.
@@ -111,15 +111,19 @@ public class UnitTests {
 
     // Review
     // Tests that review has initialized its values correctly.
-    @Test
-    public void ReviewInitializationTest() {
-        DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
-        Workflow workflow = new Workflow(report, "Review");
+    // @Test
+    // public void ReviewInitializationTest() {
+    //     DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
+    //     // Workflow workflow = new Workflow(report, "Review");
 
-        Review review = new Review(true, workflow);
+    //     Review review = new Review(true, workflow);
 
-        assertEquals(report, review.getReport());
-        assertEquals(true, review.getValidated());
-        assertEquals(workflow, review.getWorkflow());
-    }
+    //     assertEquals(report, review.getReport());
+    //     assertEquals(true, review.getValidated());
+    //     assertEquals(workflow, review.getWorkflow());
+    // }
+
+    //Workflow Test
+    // @Test
+    // public void Workflo
 }

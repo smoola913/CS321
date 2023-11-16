@@ -8,26 +8,29 @@ enum wfStep{
 }
 
 public class Workflow {
-    HashMap<wfStep, Queue<DivorceReport>> wfTable = new HashMap<>();
+    private static HashMap<wfStep, Queue<DivorceReport>> wfTable = new HashMap<>();
 
     /**
      * createWorkflowItem will take a divorce report as a parameter and add it to the hashmap. 
      * The associated key is wfStep.REVIEW.
      * @param dr
      */
-    public void createWorkflowItem(DivorceReport dr){
+    public static void createWorkflowItem(DivorceReport dr){
         if (!wfTable.containsKey(wfStep.REVIEW)) {
             wfTable.put(wfStep.REVIEW, new LinkedList<>());
         }
         wfTable.get(wfStep.REVIEW).add(dr);
+        System.out.println(dr + " has been added to workflow");
     }
 
     /**
      * getReviewitem() is called from the review screen, and polls the REVIEW queue from the map to get the next review item.
      * @return
      */
-    public DivorceReport getReviewItem() {
-        return wfTable.get(wfStep.REVIEW).poll();
+    public static DivorceReport getReviewItem() {
+        DivorceReport dr = wfTable.get(wfStep.REVIEW).poll();
+        System.out.println(dr + " has been removed from workflow");
+        return dr;
     }
 
     /**
@@ -35,18 +38,21 @@ public class Workflow {
      * It puts the reviewed divorce report into the hasmap with the wfStep.APPROVAL key. 
      * @param dr
      */
-    public void putReviewedItem(DivorceReport dr) {
+    public static void putReviewedItem(DivorceReport dr) {
         if (!wfTable.containsKey(wfStep.APPROVAL)) {
             wfTable.put(wfStep.APPROVAL, new LinkedList<>());
         }
         wfTable.get(wfStep.APPROVAL).add(dr);
+        System.out.println(dr + " has been added to workflow");
     }
 
     /**
      * getAppprovalItem will poll the approvalQueue of the workflow table to get a divorce report to approve.
      * @return
      */
-    public DivorceReport getApprovalItem() {
-        return wfTable.get(wfStep.APPROVAL).poll();
+    public static DivorceReport getApprovalItem() {
+        DivorceReport dr = wfTable.get(wfStep.APPROVAL).poll();
+        System.out.println(dr + " has been removed from workflow");
+        return dr;
     }  
 }

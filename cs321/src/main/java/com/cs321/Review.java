@@ -9,7 +9,7 @@ public class Review {
     public Review(Boolean validated, Workflow workflow) {
         this.validated = validated;
         this.workflow = workflow;
-        this.report = workflow.getReport();
+        // this.report = workflow.getReport();
     }
 
     public DivorceReport getReport() {
