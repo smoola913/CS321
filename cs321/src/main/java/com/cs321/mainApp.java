@@ -18,30 +18,32 @@ public class MainApp extends Application {
      * 
      */
     @Override
-    public void start(Stage reviewStage) throws IOException {
+    public void start(Stage dataEntryStage) throws IOException {
         dataentry = createScene("data-entry");
         review = createScene("review");
         approval = createScene("approval");
 
+        dataEntryStage.setScene(dataentry);
+        dataEntryStage.setTitle("Data Entry");
+        dataEntryStage.show();
+
+        Stage reviewStage = new Stage();
         reviewStage.setScene(review);
         reviewStage.setTitle("Review");
+        reviewStage.setX(dataEntryStage.getX());
+        reviewStage.setY(dataEntryStage.getY());
         reviewStage.setHeight(800);
         reviewStage.setWidth(600);
         reviewStage.show();
 
-        Stage dataEntryStage = new Stage();
-        dataEntryStage.setScene(dataentry);
-        dataEntryStage.setTitle("Data Entry");
-        dataEntryStage.setX(reviewStage.getX() + 700);
-        dataEntryStage.setY(reviewStage.getY());
-        dataEntryStage.show();
-
         Stage approvalStage = new Stage();
         approvalStage.setScene(approval);
         approvalStage.setTitle("Approval");
-        approvalStage.setX(reviewStage.getX() - 700);
-        approvalStage.setY(reviewStage.getY());
+        approvalStage.setX(dataEntryStage.getX() + 700);
+        approvalStage.setY(dataEntryStage.getY());
         approvalStage.show();
+
+        dataEntryStage.setX(dataEntryStage.getX() - 700);
     }
 
     private static Scene createScene(String fxml) throws IOException {
