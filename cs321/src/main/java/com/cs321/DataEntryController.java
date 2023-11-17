@@ -14,10 +14,12 @@ public class DataEntryController {
     private TextField name;
     @FXML
     private TextField spouse_name;
+    @FXML
+    private TextField status;
 
     @FXML
     private void createReport(ActionEvent event) throws IOException {
-        DivorceReport dr = new DivorceReport(name.getText(), spouse_name.getText(), "N/A ATM");
+        DivorceReport dr = new DivorceReport(name.getText(), spouse_name.getText(), status.getText());
         Workflow.createWorkflowItem(dr);
     }
 
