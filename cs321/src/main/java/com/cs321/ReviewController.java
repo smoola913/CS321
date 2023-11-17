@@ -22,7 +22,7 @@ public class ReviewController {
 
     @FXML
     public void initialize() {
-        System.out.println("REVIEW");
+        System.out.println("Review initialized.");
     }
 
     /*
@@ -31,9 +31,15 @@ public class ReviewController {
      */
     @FXML
     private void view(ActionEvent event) throws IOException {
-        user.setText(review.getReport().getUserInformation());
-        spouse.setText(review.getReport().getSpouseInformation());
-        marriage.setText(review.getReport().getMarriageStatus());
+        if (review.getReport() != null) {
+            user.setText(review.getReport().getUserInformation());
+            spouse.setText(review.getReport().getSpouseInformation());
+            marriage.setText(review.getReport().getMarriageStatus());
+        }
+
+        else {
+            System.out.println("Report does not exist.");
+        }
     }
 
     /*
@@ -57,12 +63,17 @@ public class ReviewController {
 
     /*
      * Gets the next review item in the workflow and sets it to review's report.
+     * Shows the values of the newly obtained review item.
      * 
      */
 
     @FXML
     private void next() {
         review.setReport(Workflow.getReviewItem());
+
+        user.setText(review.getReport().getUserInformation());
+        spouse.setText(review.getReport().getSpouseInformation());
+        marriage.setText(review.getReport().getMarriageStatus());
     }
 
     /*

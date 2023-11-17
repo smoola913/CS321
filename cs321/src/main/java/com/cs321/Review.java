@@ -25,12 +25,4 @@ public class Review {
     public void setValidated(Boolean validated) {
         this.validated = validated;
     }
-
-    public void showReviewScreen() {
-        // Not needed for Sprint 1.
-    }
-
-    public void nextStep(Boolean validated) {
-        // Not needed for Sprint 1.
-    }
 }
