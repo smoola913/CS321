@@ -1,8 +1,5 @@
 package com.cs321;
 
-import java.io.IOException;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -16,10 +13,9 @@ public class ReviewController {
     @FXML
     private TextField marriage;
 
-
     @FXML
     public void initialize() {
-        System.out.println("REVIEW");
+        System.out.println("Review initialized.");
     }
 
     /*
@@ -27,10 +23,16 @@ public class ReviewController {
      * 
      */
     @FXML
-    private void view(ActionEvent event) throws IOException {
-        user.setText(report.getUserInformation());
-        spouse.setText(report.getSpouseInformation());
-        marriage.setText(report.getMarriageStatus());
+    private void view() {
+        if (report != null) {
+            user.setText(report.getUserInformation());
+            spouse.setText(report.getSpouseInformation());
+            marriage.setText(report.getMarriageStatus());
+        }
+
+        else {
+            System.out.println("Report does not exist.");
+        }
     }
 
     /*
@@ -39,7 +41,7 @@ public class ReviewController {
      * 
      */
     @FXML
-    private void edit(ActionEvent event) throws IOException {
+    private void edit() {
         if (user.getText() != "" && report != null)
             report.setUserInformation(user.getText());
 
@@ -50,7 +52,6 @@ public class ReviewController {
             report.setMarriageStatus(marriage.getText());
 
         System.out.println(report);
-        
     }
 
     /*
