@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class DataEntryController {
-    
+
     private Workflow workflow;
 
     @FXML
@@ -22,7 +22,7 @@ public class DataEntryController {
     }
 
     @FXML
-    private void cancel(){
+    private void cancel() {
         System.exit(0);
     }
 }

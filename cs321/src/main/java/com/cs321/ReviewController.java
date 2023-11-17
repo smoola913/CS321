@@ -57,12 +57,18 @@ public class ReviewController {
 
     /*
      * Gets the next review item in the workflow and sets it to review's report.
+     * Shows the values of the newly obtained review item.
      * 
      */
 
     @FXML
     private void next() {
         review.setReport(Workflow.getReviewItem());
+
+        user.setText(review.getReport().getUserInformation());
+        spouse.setText(review.getReport().getSpouseInformation());
+        marriage.setText(review.getReport().getMarriageStatus());
+
     }
 
     /*
