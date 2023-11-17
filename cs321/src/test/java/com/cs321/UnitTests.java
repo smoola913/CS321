@@ -2,6 +2,9 @@ package com.cs321;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.LinkedList;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 
@@ -11,17 +14,32 @@ public class UnitTests {
 
     // Workflow
 
-    // Tests that the workflow is created from DataEntry's createWorkflowItem
-    // method.
+    @Test
+    public void testCreateWorkflowItem1(){
+        DivorceReport dr = new DivorceReport("test", "test", "test");
+        Workflow.createWorkflowItem(dr);
+        dr = Workflow.getReviewItem();
+        assertNotNull(dr);
+    }
 
-    // @Test
-    // public void WorkflowCreatedTest() {
-    // DivorceReport report = new DivorceReport("User", "Spouse", "Status");
-
-    // Workflow workflow = dataEntry .createWorkflowItem(report);
-
-    // assertNotNull(workflow);
-    // }
+    @Test
+    public void testCreateWorkflowItem2(){
+        DivorceReport dr = new DivorceReport("test", "test", "test");
+        DivorceReport dr1 = new DivorceReport("test1", "test1", "test1");
+        DivorceReport dr2 = new DivorceReport("test2", "test2", "test2");
+        Workflow.createWorkflowItem(dr);
+        Workflow.createWorkflowItem(dr1);
+        Workflow.createWorkflowItem(dr2);
+        DivorceReport getDr = Workflow.getReviewItem();
+        assertNotNull(getDr);
+        assertEquals(getDr, dr);
+        DivorceReport getDr1 = Workflow.getReviewItem();
+        assertNotNull(getDr1);
+        assertEquals(getDr1, dr1);
+        DivorceReport getDr2 = Workflow.getReviewItem();
+        assertNotNull(getDr2);
+        assertEquals(getDr2, dr2);
+    }
     /*
      * // Tests that the workflow is returned from Review, assumes validation is
      * true
