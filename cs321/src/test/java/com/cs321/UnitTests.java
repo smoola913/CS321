@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
@@ -14,80 +15,116 @@ public class UnitTests {
 
     // Workflow
 
-    @Test
-    public void testCreateWorkflowItem1(){
-        DivorceReport dr = new DivorceReport("test", "test", "test");
-        Workflow.createWorkflowItem(dr);
-        dr = Workflow.getReviewItem();
-        assertNotNull(dr);
-    }
-
-    @Test
-    public void testCreateWorkflowItem2(){
-        DivorceReport dr = new DivorceReport("test", "test", "test");
-        DivorceReport dr1 = new DivorceReport("test1", "test1", "test1");
-        DivorceReport dr2 = new DivorceReport("test2", "test2", "test2");
-        Workflow.createWorkflowItem(dr);
-        Workflow.createWorkflowItem(dr1);
-        Workflow.createWorkflowItem(dr2);
-        DivorceReport getDr = Workflow.getReviewItem();
-        assertNotNull(getDr);
-        assertEquals(getDr, dr);
-        DivorceReport getDr1 = Workflow.getReviewItem();
-        assertNotNull(getDr1);
-        assertEquals(getDr1, dr1);
-        DivorceReport getDr2 = Workflow.getReviewItem();
-        assertNotNull(getDr2);
-        assertEquals(getDr2, dr2);
-    }
     /*
-     * // Tests that the workflow is returned from Review, assumes validation is
-     * true
-     * // and the workflow object will have Approval as the next step.
-     * 
-     * @Test
-     * public void WorkflowReviewReturnedTest() {
-     * Workflow workflow = new Workflow();
-     * 
-     * DivorceReport report = new DivorceReport("User", "Spouse", "Status");
-     * 
-     * Review review = new Review(report, true, workflow);
-     * 
-     * review.nextStep(review.getValidated());
-     * 
-     * assertEquals("Approval", workflow.getStep());
-     * }
-     * 
-     * // Tests that the workflow is returned from Approval when not validated.
-     * 
-     * @Test
-     * public void WorkflowApprovalReturnedTest() {
-     * Workflow workflow = new Workflow();
-     * 
-     * DivorceReport report = new DivorceReport("User", "Spouse", "Status");
-     * 
-     * Approval approval = new Approval(report, false, workflow);
-     * 
-     * approval.nextStep(approval.getValidated());
-     * 
-     * assertEquals("Review", workflow.getStep);
-     * 
-     * }
-     * 
+     * Tests that the createWorkflowItem() function adds a report to the workflow in
+     * order, and then the getReviewItem() function removes and returns a report.
+     * Uses several reports to test that they are made and retrieved using first-in
+     * first-out order.
      */
+    @Test
+    public void CreateReviewWorkflowItemTest() {
+        DivorceReport report = new DivorceReport("a", "b", "c");
+        DivorceReport report_one = new DivorceReport("d", "e", "f");
+        DivorceReport report_two = new DivorceReport("g", "h", "i");
 
-    // Tests to ensure that report is equal to the report created in the workflow.
-    // @Test
-    // public void WorkflowTest() {
-    // DivorceReport report = new DivorceReport("Bob", "Linda", "Status");
+        Workflow.createWorkflowItem(report);
+        Workflow.createWorkflowItem(report_one);
+        Workflow.createWorkflowItem(report_two);
 
-    // Workflow workflow = new Workflow(report, "Review");
+        DivorceReport get_report = Workflow.getReviewItem();
+        assertNotNull(get_report);
+        assertEquals(get_report, report);
 
-    // assertEquals(report, workflow.getReport());
-    // }
+        DivorceReport get_report_one = Workflow.getReviewItem();
+        assertNotNull(get_report_one);
+        assertEquals(get_report_one, report_one);
 
-    // Divorce Report
-    // Tests that the report is created.
+        DivorceReport get_report_two = Workflow.getReviewItem();
+        assertNotNull(get_report_two);
+        assertEquals(get_report_two, report_two);
+    }
+
+    /*
+     * Tests that the returnApprovalItem() function adds a report to the workflow in
+     * order, and then the getApprovalItem() function removes and returns a report.
+     * Uses several reports to test that they are made and retrieved using first-in
+     * first-out order.
+     */
+    @Test
+    public void CreateApprovalWorkflowItemTest() {
+        DivorceReport report = new DivorceReport("a", "b", "c");
+        DivorceReport report_one = new DivorceReport("d", "e", "f");
+        DivorceReport report_two = new DivorceReport("g", "h", "i");
+
+        Workflow.putReviewedItem(report);
+        Workflow.putReviewedItem(report_one);
+        Workflow.putReviewedItem(report_two);
+
+        DivorceReport get_report = Workflow.getApprovalItem();
+        assertNotNull(get_report);
+        assertEquals(get_report, report);
+
+        DivorceReport get_report_one = Workflow.getApprovalItem();
+        assertNotNull(get_report_one);
+        assertEquals(get_report_one, report_one);
+
+        DivorceReport get_report_two = Workflow.getApprovalItem();
+        assertNotNull(get_report_two);
+        assertEquals(get_report_two, report_two);
+    }
+
+    /*
+     * Tests that getReviewItem() returns null if there are no review items.
+     */
+    @Test
+    public void NoReviewItemTest() {
+        DivorceReport report = Workflow.getReviewItem();
+
+        assertNull(report);
+    }
+
+    /*
+     * Tests that getApprovalItem() returns null if there are no approval items.
+     */
+    @Test
+    public void NoApprovalItemTest() {
+        DivorceReport report = Workflow.getApprovalItem();
+
+        assertNull(report);
+    }
+
+    /*
+     * Tests that createWorkflowItem() does not add to the review item queue if its
+     * report is null. Attempts to retrieve from the review queue to check.
+     */
+    @Test
+    public void CreateReviewWorkflowItemNullTest() {
+        Workflow.createWorkflowItem(null);
+
+        DivorceReport report = Workflow.getReviewItem();
+
+        assertNull(report);
+
+    }
+
+    /*
+     * Tests that putReviewedItem() does not add to the approval item queue if its
+     * report is null. Attempts to retrieve from the approval queue to check.
+     */
+    @Test
+    public void CreateApprovalWorkflowItemNullTest() {
+        Workflow.putReviewedItem(null);
+
+        DivorceReport report = Workflow.getApprovalItem();
+
+        assertNull(report);
+    }
+
+    // Divorce Report Tests
+
+    /*
+     * Tests that the report has been successfully initialized.
+     */
     @Test
     public void ReportCreatedTest() {
         DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
@@ -95,9 +132,9 @@ public class UnitTests {
         assertNotNull(report);
     }
 
-    // Tests to ensure that fields are initialized correctly.
+    // Tests that the report's fields have been successfully initialized.
     @Test
-    public void testGetUserInfo() {
+    public void GetReportInfoTest() {
 
         DivorceReport report = new DivorceReport("Mary", "John", "Status");
 
@@ -105,41 +142,4 @@ public class UnitTests {
         assertEquals("John", report.getSpouseInformation());
         assertEquals("Status", report.getMarriageStatus());
     }
-
-    // Tests if the spouse and the user are the same person.
-    /*
-     * @Test
-     * public void TestSameName() {
-     * DivorceReport report = new DivorceReport("Jeff", "Jeff", "Status");
-     * 
-     * assertNotSame(report.getUserInformation(), report.getSpouseInformation());
-     * }
-     */
-
-    // Tests if divorce report is created with an empty string.
-    @Test
-    public void EmptyString() {
-
-        DivorceReport report = new DivorceReport("", "", "");
-
-        assertTrue(report.getUserInformation().isEmpty());
-    }
-
-    // Review
-    // Tests that review has initialized its values correctly.
-    // @Test
-    // public void ReviewInitializationTest() {
-    // DivorceReport report = new DivorceReport("Jeff", "Jane", "Status");
-    // // Workflow workflow = new Workflow(report, "Review");
-
-    // Review review = new Review(true, workflow);
-
-    // assertEquals(report, review.getReport());
-    // assertEquals(true, review.getValidated());
-    // assertEquals(workflow, review.getWorkflow());
-    // }
-
-    // Workflow Test
-    // @Test
-    // public void Workflow
 }

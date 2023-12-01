@@ -18,11 +18,14 @@ public class Workflow {
      * @param divorceReport
      */
     public static void createWorkflowItem(DivorceReport divorceReport) {
-        if (!workflowTable.containsKey(step.REVIEW)) {
-            workflowTable.put(step.REVIEW, new LinkedList<>());
+        if (divorceReport != null) {
+            if (!workflowTable.containsKey(step.REVIEW)) {
+                workflowTable.put(step.REVIEW, new LinkedList<>());
+            }
+
+            workflowTable.get(step.REVIEW).add(divorceReport);
+            System.out.println(divorceReport + " has been added to workflow.");
         }
-        workflowTable.get(step.REVIEW).add(divorceReport);
-        System.out.println(divorceReport + " has been added to workflow.");
     }
 
     /**
@@ -33,9 +36,15 @@ public class Workflow {
      * @return
      */
     public static DivorceReport getReviewItem() {
-        DivorceReport divorceReport = workflowTable.get(step.REVIEW).poll();
-        System.out.println(divorceReport + " has been removed from workflow.");
-        return divorceReport;
+        if (!workflowTable.isEmpty()) {
+            if (!workflowTable.get(step.REVIEW).isEmpty()) {
+                DivorceReport divorceReport = workflowTable.get(step.REVIEW).poll();
+                System.out.println(divorceReport + " has been removed from workflow.");
+                return divorceReport;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -45,11 +54,14 @@ public class Workflow {
      * @param divorceReport
      */
     public static void putReviewedItem(DivorceReport divorceReport) {
-        if (!workflowTable.containsKey(step.APPROVAL)) {
-            workflowTable.put(step.APPROVAL, new LinkedList<>());
+        if (divorceReport != null) {
+            if (!workflowTable.containsKey(step.APPROVAL)) {
+                workflowTable.put(step.APPROVAL, new LinkedList<>());
+            }
+
+            workflowTable.get(step.APPROVAL).add(divorceReport);
+            System.out.println(divorceReport + " has been added to workflow.");
         }
-        workflowTable.get(step.APPROVAL).add(divorceReport);
-        System.out.println(divorceReport + " has been added to workflow.");
     }
 
     /**
@@ -60,8 +72,15 @@ public class Workflow {
      * @return
      */
     public static DivorceReport getApprovalItem() {
-        DivorceReport divorceReport = workflowTable.get(step.APPROVAL).poll();
-        System.out.println(divorceReport + " has been removed from workflow.");
-        return divorceReport;
+        if (!workflowTable.isEmpty()) {
+            if (!workflowTable.get(step.APPROVAL).isEmpty()) {
+                DivorceReport divorceReport = workflowTable.get(step.APPROVAL).poll();
+                System.out.println(divorceReport + " has been removed from workflow.");
+
+                return divorceReport;
+            }
+        }
+
+        return null;
     }
 }
